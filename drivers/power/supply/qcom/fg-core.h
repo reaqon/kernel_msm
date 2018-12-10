@@ -404,6 +404,11 @@ struct fg_memif {
 	u8			num_bytes_per_word;
 };
 
+struct fg_saved_data {
+	union power_supply_propval val;
+	unsigned long last_req_expires;
+};
+
 struct fg_dev {
 	struct thermal_zone_device	*tz_dev;
 	struct device		*dev;
@@ -464,6 +469,7 @@ struct fg_dev {
 	struct delayed_work	profile_load_work;
 	struct work_struct	status_change_work;
 	struct delayed_work	sram_dump_work;
+	struct fg_saved_data	saved_data[POWER_SUPPLY_PROP_MAX];
 };
 
 /* Debugfs data structures are below */
