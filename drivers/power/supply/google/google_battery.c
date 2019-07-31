@@ -859,7 +859,7 @@ static int batt_chg_stats_cstr(char *buff, int size,
 			(verbose) ? ':' : ',');
 
 		len += snprintf(&buff[len], size - len,
-			"%d.%d,%d,%d, %d,%d,%d, %d,%ld,%d, %d,%ld,%d, %d,%ld,%d",
+			"%d.%d,%d,%d, %d,%d,%d, %d,%lld,%d, %d,%lld,%d, %d,%lld,%d",
 				ce_data->tier_stats[i].soc_in >> 8,
 				ce_data->tier_stats[i].soc_in & 0xff,
 				ce_data->tier_stats[i].cc_in,

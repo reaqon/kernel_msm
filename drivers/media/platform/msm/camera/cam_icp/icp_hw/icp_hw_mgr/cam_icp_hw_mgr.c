@@ -3477,8 +3477,7 @@ static int cam_icp_mgr_process_cmd_desc(struct cam_icp_hw_mgr *hw_mgr,
 			if (rc) {
 				CAM_ERR(CAM_ICP, "get cmd buf failed %x",
 					hw_mgr->iommu_hdl);
-				num_cmd_buf = (num_cmd_buf > 0) ?
-					num_cmd_buf-- : 0;
+				num_cmd_buf = max(num_cmd_buf--, 0);
 				goto rel_cmd_buf;
 			}
 			*fw_cmd_buf_iova_addr = addr;
@@ -3501,8 +3500,7 @@ static int cam_icp_mgr_process_cmd_desc(struct cam_icp_hw_mgr *hw_mgr,
 				CAM_ERR(CAM_ICP, "get cmd buf failed %x",
 					hw_mgr->iommu_hdl);
 				*fw_cmd_buf_iova_addr = 0;
-				num_cmd_buf = (num_cmd_buf > 0) ?
-					num_cmd_buf-- : 0;
+				num_cmd_buf = max(num_cmd_buf--, 0);
 				goto rel_cmd_buf;
 			}
 			if ((len <= cmd_desc[i].offset) ||
@@ -3798,11 +3796,12 @@ static int cam_icp_packet_generic_blob_handler(void *user_data,
 			ctx_data->icp_dev_io_info.io_config_cmd_handle,
 			icp_hw_mgr.iommu_hdl,
 			blob->io_buf_addr, &io_buf_size);
-		if (rc)
+		if (rc) {
 			CAM_ERR(CAM_ICP, "Failed in blob update");
-		else
+		} else {
 			CAM_DBG(CAM_ICP, "io buf addr %llu",
 				*blob->io_buf_addr);
+		}
 		break;
 
 	case CAM_ICP_CMD_GENERIC_BLOB_FW_MEM_MAP:
