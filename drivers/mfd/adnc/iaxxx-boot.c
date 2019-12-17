@@ -23,6 +23,16 @@
 #include "iaxxx-btp.h"
 #include <linux/mfd/adnc/iaxxx-core.h>
 
+#ifdef dev_err
+#undef dev_err
+#define dev_err dev_dbg
+#endif
+
+#ifdef dev_info
+#undef dev_info
+#define dev_info dev_dbg
+#endif
+
 #define IAXXX_CHUNK_SIZE 8192
 #define IAXXX_REDUCED_CHUNK_SIZE 4096
 
@@ -84,7 +94,7 @@ static int iaxxx_download_section_chunks(struct iaxxx_priv *priv,
 	int temp_len = section->length / (chunk_size);
 	int chunk_word_size = chunk_size * 4;
 
-	dev_err(dev, "Writing section at 0x%.08X, %d words(s)\n",
+	dev_dbg(dev, "Writing section at 0x%.08X, %d words(s)\n",
 				section->start_address, section->length);
 
 	/* Write the section data directly to the device memory */
