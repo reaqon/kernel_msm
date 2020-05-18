@@ -53,6 +53,11 @@
 
 		qcom,mdss-pan-physical-width-dimension = <62>;
 		qcom,mdss-pan-physical-height-dimension = <130>;
+        
+		qcom,ulps-enabled;
+		qcom,suspend-ulps-enabled;
+		qcom,panel-allow-phy-poweroff;
+        
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
 				qcom,mdss-dsi-panel-clockrate = <550000000>;
