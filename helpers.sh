@@ -42,6 +42,10 @@ function mc() {
 	kmake "$defconfig"
 }
 
+function savecf() {
+	cp out/.config arch/arm64/configs/floral_defconfig
+}
+
 # Open an interactive config editor
 function cf() {
 	kmake nconfig
