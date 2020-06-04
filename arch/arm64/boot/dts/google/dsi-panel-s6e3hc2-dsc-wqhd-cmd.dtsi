@@ -52,9 +52,6 @@
 		qcom,mdss-dsi-lp11-init;
 		qcom,mdss-dsi-init-delay-us = <1000>;
 
-		qcom,ulps-enabled;
-		qcom,suspend-ulps-enabled;
-        
 		qcom,mdss-pan-physical-width-dimension  = <68>;
 		qcom,mdss-pan-physical-height-dimension = <143>;
 
