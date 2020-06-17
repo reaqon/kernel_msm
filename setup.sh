@@ -9,13 +9,13 @@
 BUILD_DIR="/home/nik"
 
 # Path to executables in Clang toolchain
-clang_bin="$BUILD_DIR/android/linux-x86/clang-r383902b/bin"
+clang_bin="$BUILD_DIR/android/proton-clang/bin"
 
 # 64-bit GCC toolchain prefix
-gcc_prefix64="$BUILD_DIR/android/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+gcc_prefix64="$BUILD_DIR/android/proton-clang/aarch64-linux-gnu-"
 
 # 32-bit GCC toolchain prefix
-gcc_prefix32="$BUILD_DIR/android/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-"
+gcc_prefix32="$BUILD_DIR/android/proton-clang/arm-linux-gnueabi-"
 
 # Number of parallel jobs to run
 # Do not remove; set to 1 for no parallelism.
