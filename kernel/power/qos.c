@@ -882,6 +882,9 @@ static ssize_t pm_qos_power_write(struct file *filp, const char __user *buf,
 	s32 value;
 	struct pm_qos_request *req;
 
+	/* Restrict userspace from sending pm_qos requests */
+	return count;
+
 	if (count == sizeof(s32)) {
 		if (copy_from_user(&value, buf, sizeof(s32)))
 			return -EFAULT;
