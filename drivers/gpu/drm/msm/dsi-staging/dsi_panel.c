@@ -2639,7 +2639,7 @@ static int dsi_panel_parse_dsc_params(struct dsi_display_mode *mode,
 		pr_err("invalid dsc slice-per-pkt:%d\n", data);
 		goto error;
 	}
-	priv_info->dsc.slice_per_pkt = data;
+	priv_info->dsc.slice_per_pkt = 2;
 
 	rc = utils->read_u32(utils->data, "qcom,mdss-dsc-bit-per-component",
 		&data);
@@ -2829,11 +2829,11 @@ static int dsi_panel_parse_roi_alignment(struct dsi_parser_utils *utils,
 		if (rc)
 			pr_debug("error reading panel roi alignment values\n");
 		else {
-			align->xstart_pix_align = value[0];
+			align->xstart_pix_align = 1080;
 			align->ystart_pix_align = value[1];
-			align->width_pix_align = value[2];
+			align->width_pix_align = 1080;
 			align->height_pix_align = value[3];
-			align->min_width = value[4];
+			align->min_width = 1080;
 			align->min_height = value[5];
 		}
 
