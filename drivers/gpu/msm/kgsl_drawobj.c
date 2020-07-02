@@ -394,7 +394,7 @@ static int drawobj_add_sync_fence(struct kgsl_device *device,
 	struct kgsl_cmd_syncpoint_fence *sync = priv;
 	struct kgsl_drawobj *drawobj = DRAWOBJ(syncobj);
 	struct kgsl_drawobj_sync_event *event;
-	unsigned int id, i;
+	unsigned int id;
 
 	kref_get(&drawobj->refcount);
 
@@ -433,7 +433,7 @@ static int drawobj_add_sync_fence(struct kgsl_device *device,
 	}
 
 #ifdef CONFIG_FENCE_DEBUG
-	for (i = 0; i < event->info.num_fences; i++)
+	for (unsigned int i = 0; i < event->info.num_fences; i++)
 		trace_syncpoint_fence(syncobj, event->info.fences[i].name);
 #endif
 
