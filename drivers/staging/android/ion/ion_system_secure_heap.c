@@ -388,7 +388,8 @@ struct page *alloc_from_secure_pool_order(struct ion_system_heap *heap,
 struct page *split_page_from_secure_pool(struct ion_system_heap *heap,
 					 struct ion_buffer *buffer)
 {
-	int i, j;
+	int j;
+	unsigned long i;
 	struct page *page;
 	unsigned int order;
 
